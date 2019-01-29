@@ -156,7 +156,7 @@ if main.dbConnect then begin
 
   main.cmdSql(0,'SELECT s.value FROM settings s WHERE s.param = "logTrue"',main.tmp);
   if strtoint(main.tmp)=1 then  settings.logTrue.Checked:=true else settings.logTrue.Checked:=false;
-  settings.bdWay.Text:=main.dbName;
+
 
 settings.hotKeyCurient.Caption:='0';
 

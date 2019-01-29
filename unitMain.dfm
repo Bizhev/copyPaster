@@ -3,7 +3,7 @@ object main: Tmain
   Top = 0
   Caption = 'Multi buffer ver.'
   ClientHeight = 534
-  ClientWidth = 306
+  ClientWidth = 303
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clBlue
@@ -5989,7 +5989,7 @@ object main: Tmain
   object status: TStatusBar
     Left = 0
     Top = 515
-    Width = 306
+    Width = 303
     Height = 19
     Panels = <
       item
@@ -6403,6 +6403,11 @@ object main: Tmain
       object N4: TMenuItem
         Caption = #1053#1072#1089#1090#1088#1086#1081#1082#1080
         OnClick = N4Click
+      end
+      object CTRL1: TMenuItem
+        Caption = #1047#1072#1093#1074#1072#1090' '#1082#1083#1072#1074#1080#1096#1080' CTRL'
+        Checked = True
+        OnClick = CTRL1Click
       end
       object N10: TMenuItem
         Caption = #1058#1072#1081#1084#1077#1088

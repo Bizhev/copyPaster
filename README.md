@@ -3,7 +3,7 @@
 ## Описание приложения
 Программа служит для хранения нескольких буферов обмена, программа может работать в фоновом режиме т.е. можно копировать\вставлять горячими клавишами сразу.
 ## Установка
-1. Скачать последнюю версию [Multibufer.zip](https://github.com/Bizhev/multiple-buffering/raw/master/appDebug/MultiBuffer.zip)
+1. Скачать последнюю версию [Multibufer.zip](https://raw.githubusercontent.com/delphi-m/multiple-buffering/master/appDebug/MultiBuffer.zip)
 1. Разархивировать и запустить, первый запуск длится около 2х минут
 
 ## Как пользоваться?

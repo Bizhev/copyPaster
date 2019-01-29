@@ -3,8 +3,8 @@ object settings: Tsettings
   Top = 0
   BorderStyle = bsDialog
   Caption = #1053#1072#1089#1090#1088#1086#1081#1082#1080
-  ClientHeight = 376
-  ClientWidth = 653
+  ClientHeight = 458
+  ClientWidth = 692
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -19,7 +19,7 @@ object settings: Tsettings
   object Splitter1: TSplitter
     Left = 0
     Top = 0
-    Height = 354
+    Height = 436
     ExplicitLeft = 186
     ExplicitTop = 29
     ExplicitHeight = 339
@@ -195,8 +195,8 @@ object settings: Tsettings
   end
   object StatusBar1: TStatusBar
     Left = 0
-    Top = 354
-    Width = 653
+    Top = 436
+    Width = 692
     Height = 22
     Panels = <>
   end
@@ -413,19 +413,25 @@ object settings: Tsettings
     end
   end
   object GroupBox1: TGroupBox
-    Left = 15
+    Left = 8
     Top = 8
     Width = 273
     Height = 166
     Caption = #1054#1073#1097#1080#1077' '#1085#1072#1089#1090#1088#1086#1081#1082#1080
     TabOrder = 7
-    object bdWayLabel: TLabel
-      Left = 3
+    object Label3: TLabel
+      Left = 80
       Top = 64
-      Width = 55
+      Width = 80
       Height = 13
-      Caption = #1055#1091#1090#1100' '#1082' '#1041#1044':'
-      Visible = False
+      Caption = #1050#1083#1072#1074#1080#1096#1072' SUPER'
+      Enabled = False
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
     end
     object logTrue: TCheckBox
       Left = 3
@@ -443,26 +449,18 @@ object settings: Tsettings
       Caption = #1040#1074#1090#1086#1079#1072#1087#1091#1089#1082' '#1085#1072#1087#1086#1084#1080#1085#1072#1085#1080#1081
       TabOrder = 1
     end
-    object bdWay: TEdit
-      Left = 65
-      Top = 86
-      Width = 187
-      Height = 21
-      BevelKind = bkSoft
-      TabOrder = 2
-      Text = 'bdWay'
-      Visible = False
-      OnChange = bdWayChange
-    end
-    object bdWayButton: TButton
+    object buttonSuper: TComboBox
       Left = 3
-      Top = 84
-      Width = 56
-      Height = 25
-      Caption = #1048#1079#1084#1077#1085#1080#1090#1100
-      TabOrder = 3
-      Visible = False
-      OnClick = bdWayButtonClick
+      Top = 64
+      Width = 71
+      Height = 21
+      Cursor = crHandPoint
+      Enabled = False
+      TabOrder = 2
+      OnChange = buttonSuperChange
+      Items.Strings = (
+        'ALT'
+        'CTRL')
     end
   end
   object noticeTimer: TTimer

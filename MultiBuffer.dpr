@@ -6,7 +6,8 @@ uses
   unitSettings in 'unitSettings.pas' {settings},
   unitBuffer in 'unitBuffer.pas' {buffer},
   unitTimer in 'unitTimer.pas' {fTimer},
-  unitDebug in 'unitDebug.pas' {debug};
+  unitDebug in 'unitDebug.pas' {debug},
+  unitReport in 'unitReport.pas' {report};
 
 {$R *.res}
 
@@ -19,13 +20,18 @@ begin
   Application.CreateForm(Tsettings, settings);
   Application.CreateForm(Tbuffer, buffer);
   Application.CreateForm(TfTimer, fTimer);
+  Application.CreateForm(Treport, report);
+//  unitMain.main.bdCheack.Click;
+
   if unitMain.main.dbConnect then unitMain.main.pageInitSQL(unitSettings.settings.numberPageÑurrent) else
-    unitMain.main.statusBottom('ÁÄ ÍÅ ÏÎÄÊËŞ×ÅÍÀ1','');
+    unitMain.main.statusBottom('ÁÄ ÍÅ ÏÎÄÊËŞ×ÅÍÀ!',unitMain.main.dbName);
 
   buffer.FormStyle:=fsStayOnTop;
   main.N5.Checked:=true;
   buffer.Show;
+  report.Hide;
   ftimer.Hide;
+
 
 
   Application.Run;
