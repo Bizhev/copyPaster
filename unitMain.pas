@@ -8,7 +8,7 @@ uses
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.Menus, Vcl.ComCtrls,Clipbrd,
   Vcl.Buttons, Data.FMTBcd, Data.DbxSqlite, Data.DB, Data.SqlExpr,
   IWBaseComponent, IWBaseHTMLComponent, IWBaseHTML40Component, IWCompExtCtrls,
-  Vcl.ExtCtrls;
+  Vcl.ExtCtrls, Vcl.ToolWin;
 type
 TRecHotKey = Record
   idKey:integer;
@@ -100,6 +100,8 @@ TRecHotKey = Record
     N11: TMenuItem;
     bdCheack: TMenuItem;
     CTRL1: TMenuItem;
+    aboutLink: TMenuItem;
+    Splitter1: TSplitter;
 
     procedure unRegAtoms();
     procedure addBuferIsMemo(item,note :Tmemo);
@@ -149,7 +151,6 @@ TRecHotKey = Record
     procedure goUp9Click(Sender: TObject);
     procedure goUp0Click(Sender: TObject);
     procedure N9Click(Sender: TObject);
-    procedure FormPaint(Sender: TObject);
     procedure estbutton1Click(Sender: TObject);
     procedure titleItemsChange(Sender: TObject);
     procedure hotkeys1Click(Sender: TObject);
@@ -160,6 +161,7 @@ TRecHotKey = Record
     procedure N6Click(Sender: TObject);
     procedure N10Click(Sender: TObject);
     procedure CTRL1Click(Sender: TObject);
+    procedure aboutLinkClick(Sender: TObject);
 
 
 
@@ -189,6 +191,7 @@ TRecHotKey = Record
     dbConnect: boolean;
     massHot: Array[0..200] of TrecHotkey;
     dbName : string;
+    currentVersion: string;  // текущая версия приложения
     function dbConnectCheacking(): boolean;
     procedure statusBottom(s1,s2:string);
     procedure registrAtoms();
@@ -224,7 +227,7 @@ implementation
 
 {$R *.dfm}
 
-uses unitTimer, unitDebug;
+uses unitTimer, unitDebug, UnitAbout;
 
 //function StrToCardinal(const Value: string): Cardinal;
 ////string to cardinal
@@ -357,6 +360,11 @@ for i := 20 to 20+allNumShortcuts do begin
 end;
 //  UnRegisterHotkey(Handle, id_C_SB); GlobalDeleteAtom(id_C_SB);
 end;
+procedure Tmain.aboutLinkClick(Sender: TObject);
+begin
+about.show;
+end;
+
 procedure Tmain.addBuferIsMemo(item,note :Tmemo);
 begin
   TClipboard.Create; //Создали объект
@@ -1216,10 +1224,13 @@ begin
 //  modUse := 2;
 //
 
-
+  main.dbConnect:=false;
   dbName:=GetCurrentDir + '\base.db';
   main.BufferConnection.Params.Add('Database='+dbName);
-
+  if FileExists(main.dbName) then begin
+    main.BufferConnection.Connected:=true;
+    main.dbConnect:=true;
+  end;
 //  main.dbWayEdit('');
   main.Caption := main.Caption + ' ' + currentVersion;
 //
@@ -1269,11 +1280,6 @@ procedure Tmain.FormDestroy(Sender: TObject);
 begin
 unRegAtoms(); //диактивирую все клавиши
 end;
-procedure Tmain.FormPaint(Sender: TObject);
-begin
-//  main.status.Panels[0].text:='';
-end;
-
 procedure Tmain.FormResize(Sender: TObject);
 begin
   //начало изменений формы

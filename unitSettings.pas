@@ -7,7 +7,7 @@ uses
   System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls,
   Vcl.ComCtrls,
-  Vcl.ToolWin;
+  Vcl.ToolWin, Vcl.Buttons;
 
 type
   TRecAlarm = Record
@@ -66,6 +66,7 @@ type
     bdwayCheange: TSaveDialog;
     buttonSuper: TComboBox;
     Label3: TLabel;
+    BitBtn1: TBitBtn;
 
     procedure ButtonCancelClick(Sender: TObject);
     procedure ButtonSaveClick(Sender: TObject);
@@ -487,28 +488,25 @@ end;
 procedure Tsettings.FormCreate(Sender: TObject);
 
 begin
+  //  main.dbConnect := false;
+  main.statusBottom('инициализация данных...', '');
+  main.currentVersion := '0.12.0';
+
+
   alarmNumPage := 1;
   main.numberPageMax := 99;
   settings.numberPageСurrent := 1;
+  // Сколько часов буду работать
   settings.timerAllHours.Text := '12';
+  // за это время я закрою столько заявок
   settings.timerAllClose.Text := '22';
+  // Рабочий день
   settings.timerCorrectionDay.Text := '4';
+  // Время обновления таймера
   settings.timerUpdate.Text := '2';
 
   settings.alarmNumPage := 1;
 
-  if main.dbConnect then
-  begin
-    settings.noticeInit(1);
-    main.bdCheack.Checked := true;
-    settings.initSettings();
-  end;
-
-
-  // MAIN FORM INIT
-  main.dbConnect := false;
-  main.statusBottom('инициализация данных...', '');
-  currentVersion := '0.12.0';
 
   // MOD_ALT = 1;
   // MOD_CONTROL = 2;
@@ -518,7 +516,17 @@ begin
   // main.modUse := settings.buttonSuper.ItemIndex + 1;
   main.modUse := 2; // CTRL
 
-  main.Caption := main.Caption + ' ' + currentVersion;
+  main.Caption := main.Caption + ' ' + main.currentVersion;
+
+  if main.dbConnect then
+  begin
+    settings.noticeInit(1);
+    main.bdCheack.Checked := true;
+    settings.initSettings();
+    main.registrAtoms();
+  end;
+
+
 
   // SQL - запросы
   // create table buffers (item text,notice text);
@@ -533,18 +541,16 @@ begin
   // DELETE FROM Customers
   // WHERE CustomerName='Alfreds Futterkiste';
 
-  // Проверим существования базы если есть подключим
 
-  main.registrAtoms();
+
+
 
   //
   //
   //
   // END Tsettings.FormCreate(Sender: TObject);
-
-   main.syncDbApp();
-   main.bdCheack.Click;
-
+//  main.syncDbApp();
+//  main.bdCheack.Click;
 end;
 
 procedure Tsettings.HotKey1Change(Sender: TObject);

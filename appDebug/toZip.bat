@@ -1,1 +1,1 @@
-"c:\Program Files\7-Zip\7z.exe" a -tzip ".\MultiBuffer.zip" .\MultiBuffer.exe .\sqlite3.dll -scsWIN
+"c:\Program Files\7-Zip\7z.exe" a -tzip ".\MultiBuffer.zip" .\MultiBuffer.exe .\sqlite3.dll .\base.db -scsWIN

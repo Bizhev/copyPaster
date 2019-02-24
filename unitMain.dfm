@@ -3,7 +3,7 @@ object main: Tmain
   Top = 0
   Caption = 'Multi buffer ver.'
   ClientHeight = 534
-  ClientWidth = 303
+  ClientWidth = 300
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clBlue
@@ -5310,7 +5310,6 @@ object main: Tmain
   SnapBuffer = 855
   OnCreate = FormCreate
   OnDestroy = FormDestroy
-  OnPaint = FormPaint
   OnResize = FormResize
   PixelsPerInch = 96
   TextHeight = 13
@@ -5339,6 +5338,14 @@ object main: Tmain
     Font.Name = 'Tahoma'
     Font.Style = []
     ParentFont = False
+  end
+  object Splitter1: TSplitter
+    Left = 0
+    Top = 0
+    Height = 515
+    ExplicitLeft = 186
+    ExplicitTop = 29
+    ExplicitHeight = 486
   end
   object item1: TMemo
     Left = 60
@@ -5989,7 +5996,7 @@ object main: Tmain
   object status: TStatusBar
     Left = 0
     Top = 515
-    Width = 303
+    Width = 300
     Height = 19
     Panels = <
       item
@@ -6462,8 +6469,12 @@ object main: Tmain
       end
     end
     object N3: TMenuItem
-      Caption = #1089#1086#1093#1088#1072#1085#1080#1090#1100
+      Caption = #1057#1086#1093#1088#1072#1085#1080#1090#1100
       OnClick = N3Click
+    end
+    object aboutLink: TMenuItem
+      Caption = #1054' '#1087#1088#1086#1075#1088#1072#1084#1084#1077
+      OnClick = aboutLinkClick
     end
   end
   object query: TSQLQuery

@@ -463,6 +463,14 @@ object settings: Tsettings
         'CTRL')
     end
   end
+  object BitBtn1: TBitBtn
+    Left = 312
+    Top = 456
+    Width = 75
+    Height = 25
+    Caption = 'BitBtn1'
+    TabOrder = 8
+  end
   object noticeTimer: TTimer
     Enabled = False
     Interval = 8000
