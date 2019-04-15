@@ -6414,6 +6414,7 @@ object main: Tmain
       object CTRL1: TMenuItem
         Caption = #1047#1072#1093#1074#1072#1090' '#1082#1083#1072#1074#1080#1096#1080' CTRL'
         Checked = True
+        ShortCut = 113
         OnClick = CTRL1Click
       end
       object N10: TMenuItem
